@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
-class Header extends Component {
-  render() {
 
-    if(this.props.data){
-      var name = this.props.data.name;
-      var occupation= this.props.data.occupation;
-      var description= this.props.data.description;
-      var city= this.props.data.address.city;
-      var networks= this.props.data.social.map(function(network){
+const  Header = (props) =>  {
+
+
+      var name = props.data.name;
+      var occupation= props.data.occupation;
+      var description= props.data.description;
+      var city= props.data.address.city;
+      var networks= props.data.social.map(function(network){
         return <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>
       })
-    }
+    
 
     return (
       <header id="home">
@@ -22,11 +23,11 @@ class Header extends Component {
 	      <a className="mobile-btn" href="#home" title="Hide navigation">Cacher la navigation</a>
 
          <ul id="nav" className="nav">
+            <Link to="/login">S'identifier</Link>
             <li className="current"><a className="smoothscroll" href="#home">Accueil</a></li>
             <li><a className="smoothscroll" href="#about">A propos</a></li>
 	         <li><a className="smoothscroll" href="#resume">CV</a></li>
             <li><a className="smoothscroll" href="#portfolio">Portfolio</a></li>
-            <li><a className="smoothscroll" href="#contact">Contact</a></li>
          </ul>
 
       </nav>
@@ -49,6 +50,6 @@ class Header extends Component {
    </header>
     );
   }
-}
+
 
 export default Header;
