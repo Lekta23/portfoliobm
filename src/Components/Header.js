@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import { ThisIsStatusAuth } from './Auth';
 
 
 const  Header = (props) =>  {
@@ -16,6 +17,9 @@ const  Header = (props) =>  {
 
     return (
       <header id="home">
+            <div>
+               <ThisIsStatusAuth/>
+            </div>
 
       <nav id="nav-wrap">
 

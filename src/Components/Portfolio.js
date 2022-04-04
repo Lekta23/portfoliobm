@@ -1,6 +1,28 @@
-import React from 'react';
+import {React, useState} from 'react';
+import { storage } from '../Firebase';
+import { ref } from 'firebase/storage';
+
 
 const Portfolio = (props) =>  {
+  const [image, setImage] = useState('');
+  const [Url, setUrl] = useState('');
+  
+  const upload = () => {
+    if (image == null)
+      return;
+    setUrl("Getting Download Link...")
+  
+    // Sending File to Firebase Storage
+    storage.ref(`/images/${image.name}`).put(image)
+      .on("state_changed", alert("Bien envoyé !"), alert, () => {
+  
+        // Getting Download Link
+        storage.ref("images").child(image.name).getDownloadURL()
+          .then((url) => {
+            setUrl(url);
+          })
+      });
+  }
 
 
     if(props.data){
@@ -35,6 +57,9 @@ const Portfolio = (props) =>  {
                 {projects}
             </div>
           </div>
+          <input type="file" className='mt-8'
+          onChange={(e) => { setImage(e.target.files[0]) }} />
+          <button className='bg-blue-400 py-4 px-8 rounded-md mt-12' onClick={upload}>Envoyer</button>
       </div>
    </section>
     );

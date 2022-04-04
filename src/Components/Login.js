@@ -1,7 +1,6 @@
-import React from "react";
+import { useEffect, useState, React } from "react";
 import { auth, registerWithEmailAndPassword, signInWithEmailAndPassword, signInWithGoogle } from "../Firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useEffect, useState } from "react/cjs/react.development";
 import { Link, useNavigate } from "react-router-dom";
 import '../Components/styles/Login.css'
 
