@@ -17,9 +17,6 @@ const  Header = (props) =>  {
 
     return (
       <header id="home">
-            <div>
-               <ThisIsStatusAuth/>
-            </div>
 
       <nav id="nav-wrap">
 
@@ -27,7 +24,7 @@ const  Header = (props) =>  {
 	      <a className="mobile-btn" href="#home" title="Hide navigation">Cacher la navigation</a>
 
          <ul id="nav" className="nav">
-            <Link to="/login">S'identifier</Link>
+            <li><ThisIsStatusAuth/></li>
             <li className="current"><a className="smoothscroll" href="#home">Accueil</a></li>
             <li><a className="smoothscroll" href="#about">A propos</a></li>
 	         <li><a className="smoothscroll" href="#resume">CV</a></li>

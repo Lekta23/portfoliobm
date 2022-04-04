@@ -1,6 +1,7 @@
 import {React, useState} from 'react';
 import { storage } from '../Firebase';
 import { ref } from 'firebase/storage';
+import { db } from '../Firebase';
 
 
 const Portfolio = (props) =>  {
@@ -11,20 +12,12 @@ const Portfolio = (props) =>  {
     if (image == null)
       return;
     setUrl("Getting Download Link...")
-  
-    // Sending File to Firebase Storage
-    storage.ref(`/images/${image.name}`).put(image)
-      .on("state_changed", alert("Bien envoyé !"), alert, () => {
-  
-        // Getting Download Link
-        storage.ref("images").child(image.name).getDownloadURL()
-          .then((url) => {
-            setUrl(url);
-          })
-      });
-  }
-
-
+   
+    const add = (e) => {
+    db.collection("image").add({
+      image: Url,
+      name: e.target.name.value,})
+      
     if(props.data){
       var projects = props.data.projects.map(function(projects){
         var projectImage = 'images/portfolio/'+projects.image;
@@ -59,7 +52,7 @@ const Portfolio = (props) =>  {
           </div>
           <input type="file" className='mt-8'
           onChange={(e) => { setImage(e.target.files[0]) }} />
-          <button className='bg-blue-400 py-4 px-8 rounded-md mt-12' onClick={upload}>Envoyer</button>
+          <button className='bg-blue-400 py-4 px-8 rounded-md mt-12' onClick={add}>Envoyer</button>
       </div>
    </section>
     );

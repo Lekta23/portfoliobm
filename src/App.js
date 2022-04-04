@@ -5,12 +5,13 @@ import Footer from './Components/Footer';
 import About from './Components/About';
 import Resume from './Components/Resume';
 import Portfolio from './Components/Portfolio';
+import General from './Components/General';
 import { BrowserRouter as Router , Route, Routes } from "react-router-dom";
 import Login from './Components/Login';
 
 const  App = () =>  {
 
-  const resumeData = require('./resumeData.json');
+
 
   
   
@@ -21,14 +22,8 @@ const  App = () =>  {
         <Router>
         <Routes>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/" element={<General />}></Route>
         </Routes>
-        <Header data={resumeData.main}/>
-
-        
-        <About data={resumeData.main}/>
-        <Resume data={resumeData.resume}/>
-        <Portfolio data={resumeData.portfolio}/>
-        <Footer data={resumeData.main}/>
         </Router>
       </div>
       
